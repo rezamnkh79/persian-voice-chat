@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>گفتگوی صوتی فارسی</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div>
+          <h1>گفتگوی صوتی فارسی</h1>
+          <p class="subtitle">متن ↔ صوت با دقت زبان فارسی</p>
+        </div>
+      </div>
+      <div class="header-controls">
+        <label class="field" id="edgeVoiceField">
+          <span>صدای Edge</span>
+          <select id="voiceSelect" aria-label="انتخاب صدای فارسی Edge">
+            <option value="female">دلارا (زن)</option>
+            <option value="male">فرید (مرد)</option>
+          </select>
+        </label>
+        <a class="btn" href="/settings" title="تنظیمات سرویس‌ها">تنظیمات</a>
+        <div id="statusPill" class="status-pill" data-state="checking">در حال بررسی...</div>
+      </div>
+    </header>
+
+    <main class="chat-shell">
+      <div id="chat" class="chat" role="log" aria-live="polite" aria-relevant="additions"></div>
+
+      <div id="recordingBar" class="recording-bar hidden" aria-live="assertive">
+        <span class="rec-dot"></span>
+        <span id="recTimer">۰۰:۰۰</span>
+        <span>در حال ضبط...</span>
+      </div>
+
+      <form id="composer" class="composer" autocomplete="off">
+        <textarea
+          id="messageInput"
+          rows="2"
+          placeholder="متن فارسی بنویسید یا با میکروفون صحبت کنید..."
+          maxlength="5000"
+          aria-label="پیام متنی"
+        ></textarea>
+
+        <div class="composer-actions">
+          <button type="button" id="micBtn" class="btn btn-mic" title="ضبط صدا">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <path fill="currentColor" d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/>
+            </svg>
+            <span>ویس</span>
+          </button>
+
+          <button type="button" id="stopBtn" class="btn btn-stop hidden" title="توقف ضبط">
+            توقف
+          </button>
+
+          <label class="btn btn-file" title="آپلود فایل صوتی">
+            <input type="file" id="fileInput" accept="audio/*,.wav,.mp3,.webm,.ogg,.m4a" hidden />
+            فایل
+          </label>
+
+          <button type="submit" id="sendBtn" class="btn btn-primary" title="تبدیل متن به صوت">
+            ارسال متن → صوت
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <footer class="footer">
+      <span>رایگان · edge-tts + تشخیص گفتار فارسی</span>
+    </footer>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

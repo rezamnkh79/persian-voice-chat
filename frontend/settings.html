@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تنظیمات · گفتگوی صوتی فارسی</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="app settings-app">
+    <header class="header">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div>
+          <h1>تنظیمات سرویس‌ها</h1>
+          <p class="subtitle">انتخاب TTS / STT آفلاین یا آنلاین</p>
+        </div>
+      </div>
+      <div class="header-controls">
+        <a class="btn" href="/">بازگشت به چت</a>
+      </div>
+    </header>
+
+    <section class="settings-panel">
+      <p id="settingsFlash" class="flash hidden" role="status"></p>
+
+      <form id="settingsForm" class="settings-form">
+        <fieldset>
+          <legend>متن به گفتار (TTS)</legend>
+          <div id="ttsCards" class="provider-grid"></div>
+          <label class="field block">
+            <span>سرعت Piper (length scale)</span>
+            <input type="number" id="piperLength" min="0.5" max="2" step="0.05" value="1" />
+          </label>
+          <label class="field block">
+            <span>مسیر مدل Piper (.onnx)</span>
+            <input type="text" id="piperPath" dir="ltr" />
+          </label>
+          <label class="field block">
+            <span>صدای Edge (آنلاین)</span>
+            <select id="edgeVoice">
+              <option value="female">دلارا (زن)</option>
+              <option value="male">فرید (مرد)</option>
+            </select>
+          </label>
+          <label class="field block">
+            <span>شناسه مدل MMS</span>
+            <input type="text" id="mmsModel" dir="ltr" value="facebook/mms-tts-fas" />
+          </label>
+          <label class="field block">
+            <span>پوشه Pocket TTS</span>
+            <input type="text" id="pocketDir" dir="ltr" />
+          </label>
+          <label class="field block">
+            <span>صدای مرجع Pocket</span>
+            <select id="pocketVoice">
+              <option value="female">راوی زن</option>
+              <option value="male">سلام مرد</option>
+              <option value="news">خبر مرد</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>گفتار به متن (STT)</legend>
+          <div id="sttCards" class="provider-grid"></div>
+          <label class="field block">
+            <span>مسیر مدل Vosk</span>
+            <input type="text" id="voskPath" dir="ltr" />
+          </label>
+          <label class="field block">
+            <span>کد زبان Google / مرورگر</span>
+            <input type="text" id="sttLang" dir="ltr" value="fa-IR" />
+          </label>
+        </fieldset>
+
+        <div class="settings-actions">
+          <button type="submit" class="btn btn-primary">ذخیره تنظیمات</button>
+          <button type="button" id="testTtsBtn" class="btn">تست TTS</button>
+          <button type="button" id="resetBtn" class="btn btn-stop">بازگردانی پیش‌فرض</button>
+        </div>
+      </form>
+
+      <audio id="testAudio" controls class="test-audio hidden"></audio>
+
+      <aside class="hint-box">
+        <h2>پیشنهاد شروع</h2>
+        <ul>
+          <li><strong>TTS:</strong> Mana Persian Piper — سبک، آفلاین، مناسب Production روی CPU</li>
+          <li><strong>STT:</strong> Vosk فارسی — آفلاین و سبک (~۵۰MB)</li>
+          <li><strong>Edge / Google / Browser:</strong> فقط وقتی اینترنت دارید</li>
+          <li><strong>Pocket:</strong> <code>python scripts/download_models.py --only-pocket</code> سپس اینجا انتخاب کنید</li>
+          <li><strong>MMS:</strong> نیاز به torch؛ مجوز Pocket/MMS غیرتجاری است</li>
+        </ul>
+      </aside>
+    </section>
+  </div>
+  <script src="/static/settings.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Runtime / local data
+data/settings.json
+*.log
+output/
+tmp/
+temp/
+
+# Downloaded models — local only, not pushed
+models/
+
+# Audio / archives
+*.mp3
+*.wav
+*.webm
+*.ogg
+*.m4a
+*.zip
+*.tar
+*.tar.gz
+*.7z
+
+# Hugging Face / ONNX leftovers
+*.onnx
+*.onnx.data
+*.npz
+.cache/
+hf_cache/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
